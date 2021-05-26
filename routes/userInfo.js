@@ -74,7 +74,7 @@ router.put('/:userID', function (req, res) {
     }
 });
 
-
+// 데이터 삭제
 router.delete('/:userID', function (req, res) {
     const userID = req.params.userID;
     if (userID != null) {
