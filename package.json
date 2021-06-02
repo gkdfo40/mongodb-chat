@@ -17,7 +17,8 @@
     "express": "^4.17.1",
     "is-empty": "^1.2.0",
     "mongodb": "^3.6.8",
-    "mongoose": "^5.12.11"
+    "mongoose": "^5.12.11",
+    "pbkdf2-password": "^1.2.1"
   },
   "devDependencies": {
     "got": "^11.3.0",

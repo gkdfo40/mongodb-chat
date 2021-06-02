@@ -11,8 +11,8 @@ var Schema = mongoose.Schema;
 var userSchema = new Schema({
     userID: String,
     username: String,
-    age: Number,
-    tel: String
+    password: String,
+    salt: String
 });
 
 module.exports = mongoose.model('userInfo', userSchema, 'userInfo');
