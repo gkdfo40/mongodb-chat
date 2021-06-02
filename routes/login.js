@@ -12,14 +12,15 @@ router.post('/', function (req, res) {
     var password = req.body.password;
 
     data.findOne({ userID: userid }, function (err, doc) {
+        var resultInfo = { msg: "login Falied" };
         if (err) {
-            res.json({ resultcode: 101, msg: "ID가 일치하지 않습니다." });
+            res.json(resultInfo);
         }
         else if (doc) {
             hasher({ password: password, salt: doc.salt }, (err, pass, salt, hash) => {
                 if (hash === doc.password) {
                     console.log(doc.userID + " is logined");
-                    res.json({ resultcode: 100, userID: doc.userID, username: doc.username });
+                    res.json(doc);
                 }
                 else {
                     res.json({ resultcode: 202, msg: "login failed" });
@@ -27,7 +28,7 @@ router.post('/', function (req, res) {
             });
         }
         else {
-            res.json({ resultcode: 204, msg: "ID가 일치하지 않습니다." });
+            res.json(resultInfo);
         }
     });
 });
