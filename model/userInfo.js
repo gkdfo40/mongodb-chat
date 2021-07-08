@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-let url = "mongodb+srv://clientuser:157923468@samjotecbase.ay4fs.mongodb.net/samjo?retryWrites=true&w=1";
+let url = process.env.MONGODB_URL;
 mongoose.connect(url, { dbName: 'samjo', useNewUrlParser: true }, function (err) {
     console.log('err ::' + err);
 });
@@ -12,7 +12,9 @@ var userSchema = new Schema({
     userID: String,
     username: String,
     password: String,
-    salt: String
+    salt: String,
+    memberlist: [],
+    chatList: []
 });
 
 module.exports = mongoose.model('userInfo', userSchema, 'userInfo');
